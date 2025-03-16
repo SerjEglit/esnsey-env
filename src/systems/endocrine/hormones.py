@@ -2,6 +2,7 @@ from pydantic import BaseModel, Field
 from typing import Dict
 from collections import UserDict
 
+
 class Hormone(BaseModel):
     """Базовый класс биологически инспирированного гормона"""
     name: str = Field(..., min_length=3)
@@ -19,6 +20,7 @@ class Hormone(BaseModel):
                 "energy_consumption": 0.2
             }
         )
+
 
 class HormonalBalance(UserDict):
     def __init__(self):

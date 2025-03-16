@@ -4,6 +4,8 @@ from src.systems.immune.security import BioFirewall
 from src.core.exceptions import SecurityBreach
 from src.systems.metabolism.data_processing import DataMetabolism
 from src.systems.endocrine.regulation import NeuroEndocrineRegulator
+from src.systems.nervous.plasticity import NeuroPlasticityEngine
+
 
 class MentalityCore:
     def __init__(self, dna: ESNSeYGeneticCode):
@@ -12,6 +14,7 @@ class MentalityCore:
         self.immune_system = BioFirewall(dna)
         self.metabolism = DataMetabolism()  # Добавляем метаболизм
         self.endocrine_system = NeuroEndocrineRegulator(dna)
+        self.plasticity_engine = NeuroPlasticityEngine(dna)
 
     def _build_neural_architecture(self):
         """Создание нейронной структуры на основе ДНК"""
@@ -27,6 +30,11 @@ class MentalityCore:
         """Обработка входящих сигналов с проверкой безопасности"""
         system_params = self._load_current_params()  # Новый метод
         _adjusted_params = self.endocrine_system.adjust_system_params(system_params)
+
+        self.neural_weights = self.plasticity_engine.adjust_weights(
+            self.neural_weights,
+            self.endocrine_system.current_levels
+        )
 
         if not self.immune_system.scan_input(data):
             raise SecurityBreach("Обнаружена потенциальная угроза!")

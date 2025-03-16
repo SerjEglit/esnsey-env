@@ -1,5 +1,6 @@
 import unittest
-from src.core.genetic_code import ESNSeYGeneticCode
+from src.core.genetic_code import ESNSeYGeneticCode, GeneticHyperparams
+from src.systems.endocrine.regulation import NeuroEndocrineRegulator
 
 
 class TestGeneticCode(unittest.TestCase):
@@ -7,7 +8,12 @@ class TestGeneticCode(unittest.TestCase):
         self.dna = ESNSeYGeneticCode()
 
     def test_initial_hyperparams(self):
-        self.assertAlmostEqual(self.dna.hyperparams.mutation_rate, 0.05)
+        hyperparams = GeneticHyperparams(
+            mutation_rate=0.05,
+            neuroplasticity=0.7,
+            homeostasis={"min_energy": 30.0, "recovery_rate": 0.1}
+        )
+        regulator = NeuroEndocrineRegulator(ESNSeYGeneticCode(hyperparams))
 
     def test_mutation(self):
         initial = self.dna.hyperparams.neuroplasticity

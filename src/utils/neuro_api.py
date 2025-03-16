@@ -19,4 +19,3 @@ class NeurotransmitterAPI:
             return response.json()
         except RequestException as e:
             raise ConnectionError(f"Neuro API error: {str(e)}")
-

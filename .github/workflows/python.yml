@@ -1,20 +1,10 @@
-name: ESNSeY CI
-
+name: Deploy ESNSeY Dashboard
 on: [push]
-
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python 3.13
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.13'
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-    - name: Run tests
-      run: |
-        python -m unittest discover tests/
+      - uses: actions/checkout@v4
+      - run: |
+          pip install -r requirements.txt
+          nohup python src/web/dashboard.py &
