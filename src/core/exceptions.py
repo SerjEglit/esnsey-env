@@ -1,4 +1,3 @@
-# src/core/exceptions.py
 class SecurityBreach(Exception):
     """Исключение для нарушений безопасности системы"""
     def __init__(self, message="Security breach detected"):

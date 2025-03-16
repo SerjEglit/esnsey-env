@@ -1,4 +1,3 @@
-# src/systems/immune/security.py
 from typing import Any
 from pydantic import BaseModel, Field, field_validator
 from src.core.genetic_code import ESNSeYGeneticCode
@@ -8,8 +7,8 @@ class ThreatPattern(BaseModel):
     signature: str
     threat_level: int = Field(ge=1, le=10)
 
-    @field_validator('signature')
     @classmethod
+    @field_validator('signature')
     def validate_signature(cls, v: str) -> str:
         """Нормализация и валидация сигнатуры"""
         if len(v) < 3:
