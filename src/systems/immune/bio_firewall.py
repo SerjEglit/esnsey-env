@@ -1,4 +1,3 @@
-# src/systems/immune/bio_firewall.py
 from pydantic import BaseModel
 
 class ThreatReport(BaseModel):

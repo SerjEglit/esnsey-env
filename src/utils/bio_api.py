@@ -1,4 +1,3 @@
-# src/utils/bio_api.py
 from src.utils.config import BioConfig
 
 class NeuroAPI:

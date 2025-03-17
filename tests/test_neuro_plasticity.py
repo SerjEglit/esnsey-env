@@ -29,15 +29,3 @@ def test_quantum_plasticity():
         assert False
     except ValueError:
         assert True
-
-"""
-pytest tests/test_neuro_plasticity.py -v
-
-git add .
-git commit -m "fix(quantum): Add power-of-two padding for weights
-- Implement automatic weights padding
-- Use Statevector for proper simulation
-- Update tests for different lengths"
-git push origin feature/neuro-plasticity
-
-"""

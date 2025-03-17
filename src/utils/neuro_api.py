@@ -1,4 +1,3 @@
-# src/utils/neuro_api.py
 import requests
 from requests import RequestException
 

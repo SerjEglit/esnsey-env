@@ -1,7 +1,10 @@
-# src/api/neuro_sync.py
 from fastapi import FastAPI
 
 app = FastAPI()
+
+@app.get("/")
+def root():
+    return {"message": "Добро пожаловать в ESNSeY API"}
 
 @app.get("/status")
 def get_status():

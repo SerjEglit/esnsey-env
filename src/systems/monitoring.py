@@ -1,4 +1,3 @@
-# src/systems/monitoring.py
 import psutil
 
 def get_cpu_usage() -> float:

@@ -1,4 +1,3 @@
-# src/systems/nervous/plasticity.py
 import warnings
 import numpy as np
 from pydantic import BaseModel

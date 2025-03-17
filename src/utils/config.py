@@ -1,4 +1,3 @@
-# src/utils/config.py
 class BioConfig:
     NEURO_API_BASE = "https://api.esnsey.neuro/v3"
     SYNAPSE_ENDPOINT = f"{NEURO_API_BASE}/synapse"

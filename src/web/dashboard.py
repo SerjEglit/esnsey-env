@@ -1,20 +1,9 @@
-from urllib import request
-
-from flask import Flask, jsonify
-import random
-from threading import Thread
-from time import sleep
+from flask import Flask, jsonify, request
 from src.systems.monitoring import get_cpu_usage, get_memory_usage
 import logging
 
 logging.basicConfig(level=logging.INFO)
 app = Flask(__name__)
-
-
-@app.route('/data')
-def data():
-    app.logger.info(f"Request from IP: {request.remote_addr}")
-    return jsonify({"cpu": 5.4, "mem": 6.72})
 
 @app.route('/')
 def index():
@@ -31,6 +20,7 @@ def index():
 
 @app.route('/data')
 def data():
+    app.logger.info(f"Request from IP: {request.remote_addr}")
     return jsonify({
         "cpu": get_cpu_usage(),
         "mem": get_memory_usage()
@@ -39,7 +29,6 @@ def data():
 @app.route('/favicon.ico')
 def favicon():
     return app.send_static_file('favicon.ico')
-
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8080)
